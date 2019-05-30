@@ -10,16 +10,14 @@ TRABAJO FINAL
 
 ### Introducción
 
-_Motivacion, Problema General, Solucion General, lo que se espera_
-
-la motivacion es poder trabajar proyecto de data science, machine learning con grandes cantidades de datos de manera eficiente. La solucion para ello es utilizar los data frames con las opciones indicadas. lo que se espera es manjear grandes cantidades de datos de manera eficiente.
+La motivacion es poder trabajar con un proyecto de data science o machine learning que albergan grandes cantidades de datos y trabaja con ellos de manera eficiente. El problema es la ineficiencia a la hora de trabajar con grandes cantidades de datos. Ya que cuando se desea realizar una buqueda en particular u otras acciones el programa tardaría demasiado. La solucion para ello es utilizar los data frames y metodos de ordenamientos , busquedas ,indexado ,importación ,filtrado u exportación de datos lo mas eficientes posibles para dicha situación. Lo que se espera es manejear grandes cantidades de datos de manera eficiente.
 
 
 ### Objetivos
 
-_Ver la taxonomia de bloom para seleccionar verbos_
-_Objetivo General: dar solucion al problema_
-_Objetivos especificos: analizar, diseñar, implementar_
+Ver la taxonomia de bloom para seleccionar verbos
+Objetivo General: Poder trabajar eficientemente con grandes cantidades de datos.
+Objetivos especificos: Analizar el problema, diseñar la solución, implementar la solucion.
 
 ### Marco Conceptual
 
@@ -29,4 +27,8 @@ _Teoria de dataframes, Ordenamientos, Busqueda, Arboles_
 
 ### Cronograma
 
-_Refererencia a mienstoles e issues del proyecto_
+Hito 1 : Presentacion del informe -> Fecha de inicio: 28/05/2019 Fecha de entrega: 30/05/2019
+
+Hito 2 : Avance del proyecto -> Fecha de inicio: 30/05/2019 Fecha de entrega: 06/06/2019
+
+Hito 3: Culminación del proyecto -> Fecha de inicio: 06/06/2019 Fecha de entrega: 19/06/2019
