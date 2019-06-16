@@ -115,6 +115,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="LibreriaPanda.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Columna.h" />
+    <ClInclude Include="DataFrame.h" />
+    <ClInclude Include="Fila.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
