@@ -25,7 +25,7 @@ _Teoria de dataframes, Ordenamientos, Busqueda, Arboles_
 
 ### Diagrama de Clases (alto nivel)
 
-![DiagramaTF](https://user-images.githubusercontent.com/51141922/59154656-17e48080-8a3d-11e9-85a8-3f7ef56a31e6.png)
+![Diagrama de Clses TF](https://user-images.githubusercontent.com/51141922/59561628-3839af80-8fe8-11e9-97ae-3c3fd35b9399.PNG)
 
 
 
