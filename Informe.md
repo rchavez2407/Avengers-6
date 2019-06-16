@@ -25,6 +25,10 @@ _Teoria de dataframes, Ordenamientos, Busqueda, Arboles_
 
 ### Diagrama de Clases (alto nivel)
 
+![DiagramaTF](https://user-images.githubusercontent.com/51141922/59154656-17e48080-8a3d-11e9-85a8-3f7ef56a31e6.png)
+
+
+
 ### Cronograma
 
 Hito 1 : Presentacion del informe -> Fecha de inicio: 28/05/2019 Fecha de entrega: 30/05/2019
