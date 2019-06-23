@@ -1,25 +1,30 @@
 #pragma once
 #include "vector"
+#include "Columna.h"
+#include <map>
+
 
 using namespace std;
 
-
+typedef map<string, CColumna*> colmap;
 
 class CFila {
 
 private:
 
 	int indice;
-	
+	colmap * cols;
+
 public:
 
-	CFila(){}
+	CFila(colmap * cols):cols(cols){}
 	~CFila(){}
 
+	string getData(string name) {
 
-	int GetIndice() {}
-	template<typename T>
-	void SetValor(T valor ,string nombre , vector<T> columna) {}
-	template<typename T>
-	T GetValor(string nombre , vector<T> columna ){}
+		return (*cols)[name][indice];
+
+	}
+
+	
 };

@@ -4,19 +4,16 @@
 
 
 
-template<typename T>
+
 class CDataFrame {
 
 private:
 
-	CFila * fil;
-	CColumna<T> * col;
+	vector<CFila *> fil;
+	vector<CColumna*> col;
 
 public:
-	CDataFrame(int F , int C) {
-	
-		fil = new CFila[F];
-		col = new CColumna<T>[C];
+	CDataFrame() {
 		/*
 		col[0] = new CColumna<int>;//una columna de enteros
 		col[1] = new CColumna<string>;//una columna de strings */
@@ -30,9 +27,9 @@ public:
 	void CrearDataFrame(){}
 	void ImprimirDataFrame(){}
 	void IndexarDataFrame(){}
-	CDataFrame SeleccionarDataFrame(int F , int C){}
-	CDataFrame FiltrarDataFrame(string n){}
-	CDataFrame OrdenarDataFrame(string n){}
+	CDataFrame *SeleccionarDataFrame(int F , int C){}
+	CDataFrame *FiltrarDataFrame(string n){}
+	CDataFrame *OrdenarDataFrame(string n){}
 	void ExportarDataFrame(){}
 
 };
