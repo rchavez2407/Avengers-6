@@ -1,9 +1,9 @@
 #pragma once
 #include "Columna.h"
 #include "Fila.h"
+#include <map>
 
-
-
+typedef map<string, CColumna *> colmap;
 
 class CDataFrame {
 
@@ -11,13 +11,17 @@ private:
 
 	vector<CFila *> fil;
 	vector<CColumna*> col;
+	colmap  Ncols;
 
 public:
 	CDataFrame() {
-		/*
-		col[0] = new CColumna<int>;//una columna de enteros
-		col[1] = new CColumna<string>;//una columna de strings */
-		//.............
+		for (CColumna * c : col) {
+
+			Ncols[c->GetNombre()] = c;
+
+		}
+
+
 	}
 	~CDataFrame(){}
 

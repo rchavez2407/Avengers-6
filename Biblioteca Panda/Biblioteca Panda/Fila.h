@@ -1,6 +1,7 @@
 #pragma once
 #include "vector"
 #include "Columna.h"
+
 #include <map>
 
 
@@ -13,17 +14,21 @@ class CFila {
 private:
 
 	int indice;
-	colmap * cols;
+	colmap cols;
+	
+	//cols["hola"]
 
 public:
 
-	CFila(colmap * cols):cols(cols){}
+	CFila(int indice , colmap cols) :indice(indice),cols(cols) {
+		
+	}
+
 	~CFila(){}
 
 	string getData(string name) {
 
-		return (*cols)[name][indice];
-
+		return (cols[name]->Getdatos())[indice];
 	}
 
 	
