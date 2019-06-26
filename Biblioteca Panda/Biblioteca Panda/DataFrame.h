@@ -9,18 +9,12 @@ class CDataFrame {
 
 private:
 
-	vector<CFila *> fil;
-	vector<CColumna*> col;
-	colmap  Ncols;
+	vector<CFila *> fil;//manera de insertar filas
+	colmap col;//manera de insertar columnas
+	//Primero se llenan columnas y despues las filas
 
 public:
 	CDataFrame() {
-		for (CColumna * c : col) {
-
-			Ncols[c->GetNombre()] = c;
-
-		}
-
 
 	}
 	~CDataFrame(){}
@@ -31,7 +25,21 @@ public:
 	void CrearDataFrame(){}
 	void ImprimirDataFrame(){}
 	void IndexarDataFrame(){}
-	CDataFrame *SeleccionarDataFrame(int F , int C){}
+	CDataFrame *SeleccionarDataFrame(vector<string> ColSeleccion){
+	
+		CDataFrame * selDF = new CDataFrame();
+
+		for (string c : ColSeleccion) {
+
+			(selDF->col)[c] = (this->col)[c];
+
+		}
+		 
+		selDF->fil = this->fil;
+
+		return selDF;
+	
+	}//listo
 	CDataFrame *FiltrarDataFrame(string n){}
 	CDataFrame *OrdenarDataFrame(string n){}
 	void ExportarDataFrame(){}
