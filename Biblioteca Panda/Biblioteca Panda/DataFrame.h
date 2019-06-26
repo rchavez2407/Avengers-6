@@ -1,5 +1,8 @@
 #pragma once
 #include "Columna.h"
+#include <string>
+#include <fstream>
+#include <sstream>
 #include "Fila.h"
 #include <map>
 
@@ -13,15 +16,35 @@ private:
 	colmap col;//manera de insertar columnas
 	//Primero se llenan columnas y despues las filas
 
+
+private:
+	//Datos para importar
+	ofstream writteFile;
+	ifstream readFile;
+
+
 public:
 	CDataFrame() {
-
 	}
 	~CDataFrame(){}
 
 	//Metodos del DataFrame
 
-	void ImportarDatos(){}
+	void ImportarDatos(string nombreArchivo){
+
+		if (fil.size() == 0 && col.size() == 0) {
+
+			string rescate;
+			CColumna * c = new CColumna(rescate);
+			
+			readFile.open(nombreArchivo);
+			col[rescate] = c;
+
+		}
+	
+
+
+	}
 	void CrearDataFrame(){}
 	void ImprimirDataFrame(){}
 	void IndexarDataFrame(){}

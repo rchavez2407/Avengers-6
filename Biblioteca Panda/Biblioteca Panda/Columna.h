@@ -15,6 +15,8 @@ public:
 	CColumna(string nombre) :nombre(nombre) {  }
 	~CColumna(){}
 
+
+
 	string GetNombre() { return nombre; }
 
 	vector<string> Getdatos() {
