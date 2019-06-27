@@ -77,7 +77,71 @@ private:
 		
 
 	}
+	void CambioStrings(vector<string> & vec, int i, int min) {
 
+		string aux = vec[i];
+		vec[i] = vec[min];
+		vec[min] = aux;
+
+	}
+	void CambioEnteros(vector<int> & vec, int i, int min) {
+
+		int aux = vec[i];
+		vec[i] = vec[min];
+		vec[min] = aux;
+
+	}
+	////////////////////Codigos de ordenamiento
+	////////////////////Codigos de ordenamiento
+	////////////////////Codigos de ordenamiento
+	////////////////////Codigos de ordenamiento
+
+	int PartiotingQuick(vector<string> & vc, vector<int> & vf, int lo, int hi) {
+
+		string pivot = vc[lo];
+		int i = lo + 1; int j = hi;
+
+		while (1) {
+
+			while (ComparaStrings(vc[i], pivot)) { if (i == hi)  break; i++; }
+			while (ComparaStrings(pivot, vc[j])) { if (j == lo)break; j--; }
+			if (i >= j)break;
+			CambioStrings(vc, i, j);
+			CambioEnteros(vf,i,j);
+
+		}
+		CambioStrings(vc, lo, j);
+		CambioEnteros(vf, lo, j);
+		return j;
+
+	}
+
+	void QsORT(vector<string> & vc, vector<int> & vf, int lo, int hi) {
+
+		if (lo >= hi)return;
+
+		int j = PartiotingQuick(vc,vf, lo, hi);
+
+		QsORT(vc, vf, lo, j - 1);
+		QsORT(vc,vf, j + 1, hi);
+
+	}
+
+	void QuickSort(vector<string> & vc, vector<int> & vf) {
+
+		QsORT(vc,vf, 0, vc.size()-1);
+
+	}
+
+	void ColumnaOrdenada(vector<int> &vf, vector<string> & Co) {
+
+		QuickSort(Co, vf);
+
+	}
+
+	//////////////////////Codigos de ordenamiento
+	////////////////////Codigos de ordenamiento
+	////////////////////Codigos de ordenamiento
 public:
 	CDataFrame() {
 	}
@@ -172,12 +236,37 @@ public:
 	
 	}//listo
 	CDataFrame *FiltrarDataFrame(string n){}
+
 	CDataFrame *OrdenarDataFrame(string nombreCol){
 	
 		if (ExisteColumna(nombreCol)) {
 
 			CDataFrame * ordDf = new CDataFrame();
-			col[nombreCol];
+			vector<string> vo = col[nombreCol]->Getdatos();
+			vector<int> vectorIndice;
+			for (int i = 0; i < vectorIndice.size(); i++) {
+
+				vectorIndice[i] = i;
+			}
+
+			ColumnaOrdenada(vectorIndice, vo);
+
+			ordDf->NombreColumnas = this->NombreColumnas;
+
+			for (int i = 0; i < fil.size(); i++) {
+
+				CColumna * c = new CColumna(NombreColumnas[i]);
+				(ordDf->col)[NombreColumnas[i]] = c;
+
+				for (int j = 0; j < col.size(); j++) {
+
+					(ordDf->col)[NombreColumnas[j]] = 
+
+				}
+
+			}
+
+
 		}
 	}
 	void ExportarDataFrame(){}
