@@ -1,4 +1,5 @@
 #pragma once
+#include "ArbolAVL.h"
 #include "Columna.h"
 #include <string>
 #include <fstream>
@@ -17,6 +18,7 @@ private:
 	vector<string> NombreColumnas; // nombre de las columnas
 	colmap col;//manera de insertar columnas
 	//Primero se llenan columnas y despues las filas
+
 
 
 private:
@@ -51,7 +53,7 @@ private:
 	}
 	bool ComparaStrings(string a, string b) {
 		if (EsNumero(a)) {
-			int num1,num2;
+			int num1, num2;
 
 			num1 = atoi(a.c_str());
 			num2 = atoi(b.c_str());
@@ -65,7 +67,7 @@ private:
 			for (int i = 0; i < numen; i++) {
 
 				if (a[i] > b[i]) { return 0; break; }
-				else if(a[i] < b[i]) { return 1; break; }
+				else if (a[i] < b[i]) { return 1; break; }
 				else if (a[i] == b[i]) { continue; }
 
 			}
@@ -74,7 +76,7 @@ private:
 
 
 		}
-		
+
 
 	}
 	void CambioStrings(vector<string> & vec, int i, int min) {
@@ -107,7 +109,7 @@ private:
 			while (ComparaStrings(pivot, vc[j])) { if (j == lo)break; j--; }
 			if (i >= j)break;
 			CambioStrings(vc, i, j);
-			CambioEnteros(vf,i,j);
+			CambioEnteros(vf, i, j);
 
 		}
 		CambioStrings(vc, lo, j);
@@ -120,16 +122,16 @@ private:
 
 		if (lo >= hi)return;
 
-		int j = PartiotingQuick(vc,vf, lo, hi);
+		int j = PartiotingQuick(vc, vf, lo, hi);
 
 		QsORT(vc, vf, lo, j - 1);
-		QsORT(vc,vf, j + 1, hi);
+		QsORT(vc, vf, j + 1, hi);
 
 	}
 
 	void QuickSort(vector<string> & vc, vector<int> & vf) {
 
-		QsORT(vc,vf, 0, vc.size()-1);
+		QsORT(vc, vf, 0, vc.size() - 1);
 
 	}
 
@@ -143,13 +145,13 @@ private:
 	////////////////////Codigos de ordenamiento
 	////////////////////Codigos de ordenamiento
 public:
-	CDataFrame() {
-	}
-	~CDataFrame(){}
+
+	CDataFrame() {}
+	~CDataFrame() {}
 
 	//Metodos del DataFrame
 
-	void ImportarDatos(string nombreArchivo){
+	void ImportarDatos(string nombreArchivo) {
 
 		if (fil.size() == 0 && col.size() == 0) {
 
@@ -176,16 +178,17 @@ public:
 
 						col[NombreColumnas[NumCol]]->AgregarDato(Dato);
 						NumCol++;
-						
+
 					}
 				}
 				NumFil++;
 			}
 
-			//Agregamos Filas
-			for (int i = 0; i < NumFil-1; i++) {
 
-				CFila * f = new CFila(i,col);
+			//Agregamos Filas
+			for (int i = 0; i < NumFil - 1; i++) {
+
+				CFila * f = new CFila(i, col);
 				fil.push_back(f);
 
 			}
@@ -193,11 +196,11 @@ public:
 		}
 		else
 			cout << "El dataFrame esta lleno";
-	
+
 	}
-	void CrearDataFrame(){}
-	void ImprimirDataFrame(){
-	
+	void CrearDataFrame() {}
+	void ImprimirDataFrame() {
+
 		//impresion de nombres de columnas
 
 		for (string n : NombreColumnas) {
@@ -209,17 +212,27 @@ public:
 		//Impresion de los datos
 
 		for (CFila * f : fil) {
-			for (string c:NombreColumnas) {
-				
-				cout << f->getData(c)<<"  ";
+			for (string c : NombreColumnas) {
+
+				cout << f->getData(c) << "  ";
 			}
 			cout << endl;
 		}
-	
+
 	}
-	void IndexarDataFrame(){}
-	CDataFrame *SeleccionarDataFrame(vector<string> ColSeleccion){
-	
+	void IndexarDataFrame(string Colname) {
+
+		AVLTree * Arbolbb = new AVLTree();
+
+		for (string d : col[Colname]->Getdatos()) {
+
+			Arbolbb->Add(d);
+
+		}
+
+	}
+	CDataFrame *SeleccionarDataFrame(vector<string> ColSeleccion) {
+
 		CDataFrame * selDF = new CDataFrame();
 
 		for (string c : ColSeleccion) {
@@ -229,16 +242,16 @@ public:
 				(selDF->col)[c] = (this->col)[c];
 			}
 		}
-		 
+
 		selDF->fil = this->fil;
 
 		return selDF;
-	
-	}//listo
-	CDataFrame *FiltrarDataFrame(string n){}
 
-	CDataFrame *OrdenarDataFrame(string nombreCol){
-	
+	}//listo
+	CDataFrame *FiltrarDataFrame(string n) {}
+
+	CDataFrame *OrdenarDataFrame(string nombreCol) {
+
 		if (ExisteColumna(nombreCol)) {
 
 			CDataFrame * ordDf = new CDataFrame();
@@ -281,8 +294,21 @@ public:
 			return ordDf;
 		}
 
-		
-	}
-	void ExportarDataFrame(){}
 
+	}
+
+	void ExportarDataFrame(string nombreArchExp) {
+	
+		writteFile.open(nombreArchExp);
+		
+		for (short i = 0; i < fil.size(); i++) {
+			for (short j = 0; j < col.size(); j++) {
+				writteFile << fil[i]->getData(NombreColumnas[j]);
+				//writteFile << strings.getDato(j);
+			}
+			writteFile << endl;
+		}
+		writteFile.close();
+	}
+	
 };

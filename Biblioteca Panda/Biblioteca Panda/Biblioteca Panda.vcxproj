@@ -118,6 +118,7 @@
     <ClCompile Include="LibreriaPanda.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ArbolAVL.h" />
     <ClInclude Include="Columna.h" />
     <ClInclude Include="DataFrame.h" />
     <ClInclude Include="Fila.h" />
