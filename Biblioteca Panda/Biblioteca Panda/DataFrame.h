@@ -244,30 +244,44 @@ public:
 			CDataFrame * ordDf = new CDataFrame();
 			vector<string> vo = col[nombreCol]->Getdatos();
 			vector<int> vectorIndice;
-			for (int i = 0; i < vectorIndice.size(); i++) {
+			for (int i = 0; i < fil.size(); i++) {
 
-				vectorIndice[i] = i;
+				vectorIndice.push_back(i);
 			}
 
 			ColumnaOrdenada(vectorIndice, vo);
 
 			ordDf->NombreColumnas = this->NombreColumnas;
 
-			for (int i = 0; i < fil.size(); i++) {
+			for (int i = 0; i < col.size(); i++) {
 
 				CColumna * c = new CColumna(NombreColumnas[i]);
 				(ordDf->col)[NombreColumnas[i]] = c;
 
+			}
+			for (int i = 0; i < fil.size(); i++) {
+
 				for (int j = 0; j < col.size(); j++) {
 
-					(ordDf->col)[NombreColumnas[j]] = 
+					(ordDf->col)[NombreColumnas[j]]->AgregarDato(this->fil[vectorIndice[i]]->getData(NombreColumnas[j]));
 
 				}
 
 			}
+			//Agregamos filas
+
+			for (int i = 0; i < fil.size(); i++) {
+
+				CFila * f = new CFila(i, ordDf->col);
+				ordDf->fil.push_back(f);
+
+			}
 
 
+			return ordDf;
 		}
+
+		
 	}
 	void ExportarDataFrame(){}
 

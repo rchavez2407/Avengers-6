@@ -13,12 +13,12 @@ int main() {
 	nombres.push_back("Item Type");
 
 
-	df->ImportarDatos("1000Datos.txt");
+	df->ImportarDatos("Prueba.txt");
 
-	CDataFrame * dfSel;
-	dfSel = df->SeleccionarDataFrame(nombres);
+	CDataFrame * dfOrd;
+	dfOrd = df->OrdenarDataFrame("Item Type");
 
-	dfSel->ImprimirDataFrame();
+	dfOrd->ImprimirDataFrame();
 	
 	system("pause");
 	return 0;

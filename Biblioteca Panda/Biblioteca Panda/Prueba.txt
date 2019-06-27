@@ -1,8 +1,8 @@
-Edad,Nombre,Nacionalidad,Pais,Procedencia,Direccion
-17,juan,peruano,peru,p,av peru
-23,jose,argentino,argentina,a,av argentina
-12,Ramon,colombiano,colombia,c,av colombia
-32,Pablo,boliviano,bolivia,b,av bolivia
-41,Pedro,español,españa,e,av españa
-21,Arturo,paraguayo,paraguay,p,av paraguay
-22,Enrique,chileno,chile,c,av chile
+Edad xd,Nombre,Nacionalidad,Pais,Procedencia,Direccion,promedio
+17,Juan Reynoso,peruano,peru,p,av peru,1234.45
+23,Jose Perzr,argentino,argentina,a,av argentina,136984.45574
+12,Ramon Arnoldo,colombiano,colombia,c,av colombia,1325847.401574
+32,Pablo Bustamante,boliviano,bolivia,b,av bolivia,1478.124687
+41,Pablo Guitoerre,español,españa,e,av españa,879956.4686
+21,Arturo Melgarejo,paraguayo,paraguay,p,av paraguay,123455.4654
+22,Enrique Mapocho,chileno,chile,c,av chile,165464.4151321

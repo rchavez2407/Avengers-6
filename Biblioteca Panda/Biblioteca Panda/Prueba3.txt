@@ -1,0 +1,6 @@
+Region,Country,Item Type,Sales Channel
+Middle East and North Africa,Libya,Cosmetics,Offline
+North America,Canada,Vegetables,Online
+Middle East and North Africa,Libya,Baby Food,Offline
+Asia,Japan,Cereal,Offline
+Sub-Saharan Africa,Chad,Fruits,Offline
