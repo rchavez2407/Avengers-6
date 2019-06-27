@@ -13,12 +13,17 @@ private:
 public:
 
 	CColumna(string nombre) :nombre(nombre) {  }
+	CColumna(){  }
 	~CColumna(){}
-
 
 
 	string GetNombre() { return nombre; }
 
+	void AgregarDato(string dato) {
+
+		datos.push_back(dato);
+
+	}
 	vector<string> Getdatos() {
 
 		return datos;

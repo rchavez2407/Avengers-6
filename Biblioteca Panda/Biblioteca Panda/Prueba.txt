@@ -1,0 +1,8 @@
+Edad,Nombre,Nacionalidad,Pais,Procedencia,Direccion
+17,juan,peruano,peru,p,av peru
+23,jose,argentino,argentina,a,av argentina
+12,Ramon,colombiano,colombia,c,av colombia
+32,Pablo,boliviano,bolivia,b,av bolivia
+41,Pedro,español,españa,e,av españa
+21,Arturo,paraguayo,paraguay,p,av paraguay
+22,Enrique,chileno,chile,c,av chile
