@@ -18,7 +18,7 @@ int main() {
 	CDataFrame * dfOrd;
 	dfOrd = df->OrdenarDataFrame("Nombre");
 
-	dfOrd->ExportarDataFrame("vacio");
+	//dfOrd->ExportarDataFrame("vacio");
 
 	dfOrd->ImprimirDataFrame();
 	

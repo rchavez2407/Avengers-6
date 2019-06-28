@@ -1,4 +1,4 @@
-Edad xd,Nombre,Nacionalidad,Pais,Procedencia,Direccion,promedio
+Edad,Nombre,Nacionalidad,Pais,Procedencia,Direccion,promedio
 17,Juan Reynoso,peruano,peru,p,av peru,1234.45
 23,Jose Perzr,argentino,argentina,a,av argentina,136984.45574
 12,Ramon Arnoldo,colombiano,colombia,c,av colombia,1325847.401574
