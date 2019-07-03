@@ -1,0 +1,170 @@
+#pragma once
+#include <functional>
+
+
+class Arbol2B {
+
+	struct nodo {
+
+		int elem;
+		nodo * der;
+		nodo * izq;
+
+		nodo(int elem = 0, nodo * der = nullptr, nodo * izq = nullptr) :elem(elem), der(der), izq(izq) {}
+
+	};
+
+private:
+
+	nodo * raiz;
+	int CantNodos;
+
+	//Metodos Encapsulados
+
+	void Destruye(nodo * nod) {
+		if (nod != nullptr) {
+			//Presorden
+			Destruye(nod->izq);
+			Destruye(nod->der);
+			delete nod;
+
+		}
+	}
+
+	void agrega(nodo *& nod, int elem) {
+
+		if (nod == nullptr) { nod = new nodo(elem); }
+		else if (elem < nod->elem) {
+			agrega(nod->izq, elem);
+		}
+		else { agrega(nod->der, elem); }
+
+	}
+
+	void recorridin(nodo * nod, std::function<void(int)> imprime) {
+		if (nod != nullptr) {
+			recorridin(nod->izq, imprime);
+			imprime(nod->elem);
+			recorridin(nod->der, imprime);
+		}
+	}
+
+	nodo * BuscaHoja(nodo * nod) {
+
+		if (nod != nullptr) {
+
+			BuscaHoja(nod->izq);
+			BuscaHoja(nod->der);
+			return nod;
+		}
+
+	}
+
+
+	/*int RecuperaDato(nodo*nodo) {
+		int recu;
+
+		if(nodo->der == nullptr){
+			recu = nodo->elem;
+			delete nodo;
+			return recu;
+		}
+
+		else {
+
+			RecuperaDato(nodo->der);
+		}
+
+	}*/
+
+	void EliminarElem(nodo*nod, int elem) {
+
+		if (nod != nullptr) {
+			if (nod->elem == elem) {
+
+				if (nod->der == nullptr && nod->izq == nullptr) { delete nod; }
+
+				else if (nod->izq != nullptr && nod->izq->izq == nullptr && nod->izq->der == nullptr) {
+			
+					nod->elem = nod->izq->elem;
+					delete nod->izq;
+
+				    
+				}
+				else if (nod->der != nullptr && nod->der->izq == nullptr && nod->der->der == nullptr) {
+
+					nod->elem = nod->der->elem;
+					delete nod->der;
+				
+				
+				}
+
+
+				else if (nod->izq->der != nullptr) {
+
+					nod->elem = BuscaHoja(nod->izq->der)->elem;
+					delete BuscaHoja(nod->izq->der);
+				}
+
+
+				else if (nod->der->izq != nullptr) {
+					nod->elem = BuscaHoja(nod->der->izq)->elem;
+					delete BuscaHoja(nod->der->izq);
+				}
+				else if (nod->izq->izq != nullptr) {
+
+					nod->elem = nod->izq->elem;
+					nodo * aux = nod->izq;
+					nod->izq = nod->izq->izq;
+					delete aux;
+
+				}
+				else if (nod->der->der != nullptr) {
+
+					nod->elem = nod->der->elem;
+					nodo * aux = nod->der;
+					nod->der = nod->der->der;
+					delete aux;
+
+				}
+
+			}
+
+			else if (elem < nod->elem) {
+
+				EliminarElem(nod->izq, elem);
+
+			}
+			else { EliminarElem(nod->der, elem); }
+
+		}
+		else {
+
+			std::cout << "El elemento no existe ";
+		}
+	}
+
+public:
+
+	Arbol2B(nodo * raiz = nullptr , int CantNodos = 0){}
+	~Arbol2B() { Destruye(raiz); }
+
+	void AgregarElemento(int elem) {
+
+		agrega(raiz , elem);
+	}
+
+	void Recorrido(std::function<void(int)> imprime) {
+
+		recorridin(raiz, imprime);
+	}
+	void EliminarElemento(int elem) {
+
+		EliminarElem(raiz, elem);
+	}
+
+	int RetornaHoja() {
+
+		return BuscaHoja(raiz)->elem;
+	}
+};
