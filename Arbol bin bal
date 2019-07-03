@@ -1,0 +1,180 @@
+//clase arbol balenacedo
+#pragma once
+
+#include <algorithm>
+
+class Arbol3B {
+
+	struct nodo
+	{
+		int elem;
+		nodo * izq;
+		nodo * der;
+		int altura;
+		nodo(int elem = 0,int indice=0) :elem(elem), izq(nullptr), der(nullptr), altura(0) {}
+		static int GetAltura(nodo * nod) { return nod == nullptr ? -1 : nod->altura; }
+		void ActualizaAltura() {
+
+			altura = std::max(GetAltura(izq), GetAltura(der)) + 1;
+		}
+
+	};
+
+private:
+	nodo * raiz;
+	int CantNodos;
+
+
+	int i = 1;
+	//metodos encapsulados
+
+	void Destruye(nodo * nod) {
+		if (nod != nullptr) {
+
+			Destruye(nod->izq);
+			Destruye(nod->der);
+			delete nod;
+
+		}
+
+	}
+
+	void RotacionRIzq(nodo *&nod) {
+		//separar
+		nodo * aux = nod->izq;
+		nod->izq = aux->der;
+		nod->ActualizaAltura();
+		aux->der = nod;
+		nod = aux;
+		nod->ActualizaAltura();
+	}
+	void RotacionRDer(nodo *&nod) {
+		//separar
+
+		nodo * aux = nod->der;
+		nod->der = aux->izq;
+		nod->ActualizaAltura();
+		aux->izq = nod;
+		nod = aux;
+		nod->ActualizaAltura();
+	}
+	void Balance(nodo *& nod) {
+
+		int delta = nodo::GetAltura(nod->izq) - nodo::GetAltura(nod->der);
+		if (delta < -1) {
+			if (nodo::GetAltura(nod->der->izq) > nodo::GetAltura(nod->der->der)) {
+				RotacionRIzq(nod->der);
+
+			}
+			RotacionRDer(nod);
+		}
+		if (delta > 1) {
+
+			if (nodo::GetAltura(nod->izq->der) > nodo::GetAltura(nod->izq->izq)) {
+
+				RotacionRDer(nod->izq);
+			}
+
+			RotacionRIzq(nod);
+		}
+
+	}
+
+	void agrega(nodo*&nod, int elem) {
+
+		if (nod == nullptr) {
+
+			nod = new nodo(elem);
+			return;
+		}
+		else if (elem < nod->elem) {
+
+			agrega(nod->izq, elem);
+		}
+		else { agrega(nod->der, elem); }
+
+		Balance(nod);
+		nod->ActualizaAltura();
+
+	}
+	void ResetI() {
+
+
+	}
+	int RetornaIndice(int elem,nodo * nod) {
+		
+		
+		if (nod != nullptr) {
+			if (elem == nod->elem) {
+
+				int aux = i;
+				i = 1;
+				return aux;
+
+			}
+
+
+			else if (elem < nod->elem) {
+
+				i = i * 2;
+				RetornaIndice(elem, nod->izq);
+			}
+			else {
+				i = (i * 2) + 1;
+
+				RetornaIndice(elem, nod->der);
+
+			}
+
+		}
+	}
+
+public:
+
+	Arbol3B() :CantNodos(0), raiz(nullptr) {}
+	~Arbol3B() { Destruye(raiz); }
+
+	int GetNumElem() {
+
+		return CantNodos;
+	}
+	int Altura() {
+
+		return raiz->altura;
+	}
+
+	void AgregarElem(int elem) {
+
+		agrega(raiz, elem);
+		CantNodos++;
+	}
+	int RetornIndice(int elem) {
+
+		return RetornaIndice(elem, raiz);
+	}
+};
+//cpp
+
+#include "conio.h"
+#include "iostream"
+#include "Arbol3B.h"
+
+using namespace std;
+
+int main() {
+
+	Arbol3B * ObjArbol = new Arbol3B();
+
+	ObjArbol->AgregarElem(3);
+	ObjArbol->AgregarElem(6);
+	ObjArbol->AgregarElem(9);
+	ObjArbol->AgregarElem(8);
+
+
+	cout << "El indice de los elemnetos ingresados es: " << ObjArbol->RetornIndice(3) << " " << ObjArbol->RetornIndice(6) << " " << ObjArbol->RetornIndice(9) << " " << ObjArbol->RetornIndice(8);
+
+
+
+	_getch();
+	return 0;
+}
